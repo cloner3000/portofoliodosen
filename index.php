@@ -130,76 +130,7 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-														<form id="form_insert_journal">
-															<div class="row">
-	 																 <div class="col-md-8">
-	 																		 <div class="form-group">
-	 																			 <span>Title</span>
-	 																			 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
-	 																		 </div>
-	 																 </div>
-	 														 </div>
-															 <div class="row">
-																		<div class="col-md-8">
-																				<div class="form-group">
-																					<span>Authors</span>
-																					<input placeholder="Authors" name="authors" class="form-control" id="authors" type="text" required>
-																					<label>For example: Patterson, David; Lamport, Leslie</label>
-																				</div>
-																		</div>
-																</div>
-																<div class="row">
-																		 <div class="col-md-8">
-																				 <div class="form-group">
-																					 <span>Publication date</span>
-																					 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
-																					 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
-																				 </div>
-																		 </div>
-																 </div>
-																 <div class="row">
-																			<div class="col-md-8">
-																					<div class="form-group">
-																						<span>Journal</span>
-																						<input placeholder="Journal" name="journal" class="form-control" id="journal" type="text" required>
-																					</div>
-																			</div>
-																	</div>
-																	<div class="row">
-																			 <div class="col-md-8">
-																					 <div class="form-group">
-																						 <span>Volume</span>
-																						 <input placeholder="Volume" name="volume" class="form-control" id="volume" type="text" required>
-																					 </div>
-																			 </div>
-																	 </div>
-																	 <div class="row">
- 																			 <div class="col-md-8">
- 																					 <div class="form-group">
- 																						 <span>Issue</span>
- 																						 <input placeholder="Issue" name="issue" class="form-control" id="issue" type="text" required>
- 																					 </div>
- 																			 </div>
- 																	 </div>
-																	 <div class="row">
-																				 <div class="col-md-8">
-																						 <div class="form-group">
-																							 <span>Pages</span>
-																							 <input placeholder="Pages" name="pages" class="form-control" id="pages" type="text" required>
-																						 </div>
-																				 </div>
-																		 </div>
-																 <div class="row">
-																			 <div class="col-md-8">
-																					 <div class="form-group">
-																						 <span>Publisher</span>
-																						 <input placeholder="Publisher" name="publisher" class="form-control" id="publisher" type="text" required>
-																					 </div>
-																			 </div>
-																	 </div>
-																	<button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
-                                    <div class="clearfix"></div>
-																 </form>
+															<?php  include 'article/journal.html';?>
 														</div>
 												</div>
 										</div>
@@ -210,68 +141,7 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-												<form id="form_insert_conference">
-															<div class="row">
-	 																 <div class="col-md-8">
-	 																		 <div class="form-group">
-	 																			 <span>Title</span>
-	 																			 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
-	 																		 </div>
-	 																 </div>
-	 														 </div>
-															 <div class="row">
-																		<div class="col-md-8">
-																				<div class="form-group">
-																					<span>Authors</span>
-																					<input placeholder="Authors" name="authors" class="form-control" id="authors" type="text" required>
-																					<label>For example: Patterson, David; Lamport, Leslie</label>
-																				</div>
-																		</div>
-																</div>
-																<div class="row">
-																		 <div class="col-md-8">
-																				 <div class="form-group">
-																					 <span>Publication date</span>
-																					 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
-																					 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
-																				 </div>
-																		 </div>
-																 </div>
-																 <div class="row">
-																			<div class="col-md-8">
-																					<div class="form-group">
-																						<span>Conference</span>
-																						<input placeholder="Conference" name="conference" class="form-control" id="conference" type="text" required>
-																					</div>
-																			</div>
-																	</div>
-																	<div class="row">
-																			 <div class="col-md-8">
-																					 <div class="form-group">
-																						 <span>Volume</span>
-																						 <input placeholder="Volume" name="volume" class="form-control" id="volume" type="text" required>
-																					 </div>
-																			 </div>
-																	 </div>
-																	 <div class="row">
- 																			 <div class="col-md-8">
- 																					 <div class="form-group">
- 																						 <span>Issue</span>
- 																						 <input placeholder="Issue" name="issue" class="form-control" id="issue" type="text" required>
- 																					 </div>
- 																			 </div>
- 																	 </div>
-																	 <div class="row">
-																				 <div class="col-md-8">
-																						 <div class="form-group">
-																							 <span>Pages</span>
-																							 <input placeholder="Pages" name="pages" class="form-control" id="pages" type="text" required>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
-	                                     <div class="clearfix"></div>
-														 </form>
+															<?php  include 'article/conference.html';?>
 														</div>
 												</div>
 										</div>
@@ -282,69 +152,7 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-															<form id="form_insert_chapter">
-																		<div class="row">
-				 																 <div class="col-md-8">
-				 																		 <div class="form-group">
-				 																			 <span>Title</span>
-				 																			 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
-				 																		 </div>
-				 																 </div>
-				 														 </div>
-																		 <div class="row">
-																					<div class="col-md-8">
-																							<div class="form-group">
-																								<span>Authors</span>
-																								<input placeholder="Authors" name="authors" class="form-control" id="authors" type="text" required>
-																								<label>For example: Patterson, David; Lamport, Leslie</label>
-																							</div>
-																					</div>
-																			</div>
-																			<div class="row">
-																					 <div class="col-md-8">
-																							 <div class="form-group">
-																								 <span>Publication date</span>
-																								 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
-																								 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
-																							 </div>
-																					 </div>
-																			 </div>
-																			 <div class="row">
-																						<div class="col-md-8">
-																								<div class="form-group">
-																									<span>Book</span>
-																									<input placeholder="Book" name="book" class="form-control" id="book" type="text" required>
-																								</div>
-																						</div>
-																				</div>
-																				<div class="row">
-																						 <div class="col-md-8">
-																								 <div class="form-group">
-																									 <span>Volume</span>
-																									 <input placeholder="Volume" name="volume" class="form-control" id="volume" type="text" required>
-																								 </div>
-																						 </div>
-																				 </div>
-																				 <div class="row">
-																							 <div class="col-md-8">
-																									 <div class="form-group">
-																										 <span>Pages</span>
-																										 <input placeholder="Pages" name="pages" class="form-control" id="pages" type="text" required>
-																									 </div>
-																							 </div>
-																					 </div>
-
-																					 <div class="row">
-				 																			 <div class="col-md-8">
-				 																					 <div class="form-group">
-				 																						 <span>Publisher</span>
-				 																						 <input placeholder="Publisher" name="publisher" class="form-control" id="publisher" type="text" required>
-				 																					 </div>
-				 																			 </div>
-				 																	 </div>
-																					 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
-				                                     <div class="clearfix"></div>
-																	 </form>
+																	<?php  include 'article/chapter.html';?>
 														</div>
 												</div>
 										</div>
@@ -355,52 +163,7 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-															<form id="form_insert_book">
-																		<div class="row">
-				 																 <div class="col-md-8">
-				 																		 <div class="form-group">
-				 																			 <span>Title</span>
-				 																			 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
-				 																		 </div>
-				 																 </div>
-				 														 </div>
-																		 <div class="row">
-																					<div class="col-md-8">
-																							<div class="form-group">
-																								<span>Authors</span>
-																								<input placeholder="Authors" name="authors" class="form-control" id="authors" type="text" required>
-																								<label>For example: Patterson, David; Lamport, Leslie</label>
-																							</div>
-																					</div>
-																			</div>
-																			<div class="row">
-																					 <div class="col-md-8">
-																							 <div class="form-group">
-																								 <span>Publication date</span>
-																								 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
-																								 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
-																							 </div>
-																					 </div>
-																			 </div>
-																				<div class="row">
-																						 <div class="col-md-8">
-																								 <div class="form-group">
-																									 <span>Volume</span>
-																									 <input placeholder="Volume" name="volume" class="form-control" id="volume" type="text" required>
-																								 </div>
-																						 </div>
-																				 </div>
-																				 <div class="row">
-																							 <div class="col-md-8">
-																									 <div class="form-group">
-																										 <span>Pages</span>
-																										 <input placeholder="Pages" name="pages" class="form-control" id="pages" type="text" required>
-																									 </div>
-																							 </div>
-																					 </div>
-																					 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
-				                                     <div class="clearfix"></div>
-																	 </form>
+																<?php  include 'article/book.html';?>
 														</div>
 												</div>
 										</div>
@@ -411,45 +174,7 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-															<form id="form_insert_thesis">
-																		<div class="row">
-																				 <div class="col-md-8">
-																						 <div class="form-group">
-																							 <span>Title</span>
-																							 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="row">
-																					<div class="col-md-8">
-																							<div class="form-group">
-																								<span>Authors</span>
-																								<input placeholder="Authors" name="authors" class="form-control" id="authors" type="text" required>
-																								<label>For example: Patterson, David; Lamport, Leslie</label>
-																							</div>
-																					</div>
-																			</div>
-																			<div class="row">
-																					 <div class="col-md-8">
-																							 <div class="form-group">
-																								 <span>Publication date</span>
-																								 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
-																								 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
-																							 </div>
-																					 </div>
-																			 </div>
-
-																				 <div class="row">
-																							 <div class="col-md-8">
-																									 <div class="form-group">
-																										 <span>Institution</span>
-																										 <input placeholder="Institution" name="institution" class="form-control" id="institution" type="text" required>
-																									 </div>
-																							 </div>
-																					 </div>
-																					 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
-																						 <div class="clearfix"></div>
-																	 </form>
+															<?php  include 'article/thesis.html';?>
 														</div>
 												</div>
 										</div>
@@ -460,61 +185,7 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-															<form id="form_insert_thesis">
-																		<div class="row">
-																				 <div class="col-md-8">
-																						 <div class="form-group">
-																							 <span>Title</span>
-																							 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
-																						 </div>
-																				 </div>
-																		 </div>
-																		 <div class="row">
-																					<div class="col-md-8">
-																							<div class="form-group">
-																								<span>Investors</span>
-																								<input placeholder="Investors" name="investors" class="form-control" id="investors" type="text" required>
-																								<label>For example: Patterson, David; Lamport, Leslie</label>
-																							</div>
-																					</div>
-																			</div>
-																			<div class="row">
-																					 <div class="col-md-8">
-																							 <div class="form-group">
-																								 <span>Publication date</span>
-																								 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
-																								 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
-																							 </div>
-																					 </div>
-																			 </div>
-																			 <div class="row">
-																						 <div class="col-md-8">
-																								 <div class="form-group">
-																									 <span>Patent office</span>
-																								<?php  include 'country.html';?>
-																								 </div>
-																						 </div>
-																				 </div>
-
-																				 <div class="row">
-																							 <div class="col-md-8">
-																									 <div class="form-group">
-																										 <span>Patent number</span>
-																										 <input placeholder="Patent number" name="pnumber" class="form-control" id="pnumber" type="text" required>
-																									 </div>
-																							 </div>
-																					 </div>
-																					 <div class="row">
-																								 <div class="col-md-8">
-																										 <div class="form-group">
-																											 <span>Application number</span>
-																											 <input placeholder="Application number" name="anumber" class="form-control" id="anumber" type="text" required>
-																										 </div>
-																								 </div>
-																						 </div>
-																					 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
-																						 <div class="clearfix"></div>
-																	 </form>
+																<?php  include 'article/patent.html';?>
 														</div>
 												</div>
 										</div>
