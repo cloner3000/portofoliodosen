@@ -411,7 +411,45 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-																ttt
+															<form id="form_insert_thesis">
+																		<div class="row">
+																				 <div class="col-md-8">
+																						 <div class="form-group">
+																							 <span>Title</span>
+																							 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
+																						 </div>
+																				 </div>
+																		 </div>
+																		 <div class="row">
+																					<div class="col-md-8">
+																							<div class="form-group">
+																								<span>Authors</span>
+																								<input placeholder="Authors" name="authors" class="form-control" id="authors" type="text" required>
+																								<label>For example: Patterson, David; Lamport, Leslie</label>
+																							</div>
+																					</div>
+																			</div>
+																			<div class="row">
+																					 <div class="col-md-8">
+																							 <div class="form-group">
+																								 <span>Publication date</span>
+																								 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
+																								 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
+																							 </div>
+																					 </div>
+																			 </div>
+
+																				 <div class="row">
+																							 <div class="col-md-8">
+																									 <div class="form-group">
+																										 <span>Institution</span>
+																										 <input placeholder="Institution" name="institution" class="form-control" id="institution" type="text" required>
+																									 </div>
+																							 </div>
+																					 </div>
+																					 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
+																						 <div class="clearfix"></div>
+																	 </form>
 														</div>
 												</div>
 										</div>
@@ -422,7 +460,61 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-																ppp
+															<form id="form_insert_thesis">
+																		<div class="row">
+																				 <div class="col-md-8">
+																						 <div class="form-group">
+																							 <span>Title</span>
+																							 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
+																						 </div>
+																				 </div>
+																		 </div>
+																		 <div class="row">
+																					<div class="col-md-8">
+																							<div class="form-group">
+																								<span>Investors</span>
+																								<input placeholder="Investors" name="investors" class="form-control" id="investors" type="text" required>
+																								<label>For example: Patterson, David; Lamport, Leslie</label>
+																							</div>
+																					</div>
+																			</div>
+																			<div class="row">
+																					 <div class="col-md-8">
+																							 <div class="form-group">
+																								 <span>Publication date</span>
+																								 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
+																								 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
+																							 </div>
+																					 </div>
+																			 </div>
+																			 <div class="row">
+																						 <div class="col-md-8">
+																								 <div class="form-group">
+																									 <span>Patent office</span>
+																								<?php  include 'country.html';?>
+																								 </div>
+																						 </div>
+																				 </div>
+
+																				 <div class="row">
+																							 <div class="col-md-8">
+																									 <div class="form-group">
+																										 <span>Patent number</span>
+																										 <input placeholder="Patent number" name="pnumber" class="form-control" id="pnumber" type="text" required>
+																									 </div>
+																							 </div>
+																					 </div>
+																					 <div class="row">
+																								 <div class="col-md-8">
+																										 <div class="form-group">
+																											 <span>Application number</span>
+																											 <input placeholder="Application number" name="anumber" class="form-control" id="anumber" type="text" required>
+																										 </div>
+																								 </div>
+																						 </div>
+																					 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
+																						 <div class="clearfix"></div>
+																	 </form>
 														</div>
 												</div>
 										</div>
@@ -495,6 +587,12 @@
 
  					 alert($(this).serialize());
  				 });
+
+				 $("#form_insert_chapter").submit(function(e) { // chapter section
+						 e.preventDefault();
+
+						 alert($(this).serialize());
+					 });
 			</script>
 
 
