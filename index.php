@@ -117,7 +117,7 @@
 								<li class="active"><a href="#journal" data-toggle="tab"> Journal</a></li>
 								<li class=""><a href="#conference" data-toggle="tab">Conference</a></li>
 								<li class=""><a href="#chapter" data-toggle="tab">Chapter</a></li>
-								<li class=""><a href="#book" data-toggle="tab">Book</a></li>
+								<li class=""><a href="#bookok" data-toggle="tab">Book</a></li>
 								<li class=""><a href="#thesis" data-toggle="tab">Thesis</a></li>
 								<li class=""><a href="#patent" data-toggle="tab">Patent</a></li>
 								<li class=""><a href="#courtcase" data-toggle="tab">Court Case</a></li>
@@ -282,18 +282,125 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-															cccc
+															<form id="form_insert_chapter">
+																		<div class="row">
+				 																 <div class="col-md-8">
+				 																		 <div class="form-group">
+				 																			 <span>Title</span>
+				 																			 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
+				 																		 </div>
+				 																 </div>
+				 														 </div>
+																		 <div class="row">
+																					<div class="col-md-8">
+																							<div class="form-group">
+																								<span>Authors</span>
+																								<input placeholder="Authors" name="authors" class="form-control" id="authors" type="text" required>
+																								<label>For example: Patterson, David; Lamport, Leslie</label>
+																							</div>
+																					</div>
+																			</div>
+																			<div class="row">
+																					 <div class="col-md-8">
+																							 <div class="form-group">
+																								 <span>Publication date</span>
+																								 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
+																								 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
+																							 </div>
+																					 </div>
+																			 </div>
+																			 <div class="row">
+																						<div class="col-md-8">
+																								<div class="form-group">
+																									<span>Book</span>
+																									<input placeholder="Book" name="book" class="form-control" id="book" type="text" required>
+																								</div>
+																						</div>
+																				</div>
+																				<div class="row">
+																						 <div class="col-md-8">
+																								 <div class="form-group">
+																									 <span>Volume</span>
+																									 <input placeholder="Volume" name="volume" class="form-control" id="volume" type="text" required>
+																								 </div>
+																						 </div>
+																				 </div>
+																				 <div class="row">
+																							 <div class="col-md-8">
+																									 <div class="form-group">
+																										 <span>Pages</span>
+																										 <input placeholder="Pages" name="pages" class="form-control" id="pages" type="text" required>
+																									 </div>
+																							 </div>
+																					 </div>
+
+																					 <div class="row">
+				 																			 <div class="col-md-8">
+				 																					 <div class="form-group">
+				 																						 <span>Publisher</span>
+				 																						 <input placeholder="Publisher" name="publisher" class="form-control" id="publisher" type="text" required>
+				 																					 </div>
+				 																			 </div>
+				 																	 </div>
+																					 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
+				                                     <div class="clearfix"></div>
+																	 </form>
 														</div>
 												</div>
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade " id="book">
+								<div class="tab-pane fade " id="bookok">
 									<div class="row">
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
-																bb
+															<form id="form_insert_book">
+																		<div class="row">
+				 																 <div class="col-md-8">
+				 																		 <div class="form-group">
+				 																			 <span>Title</span>
+				 																			 <input placeholder="Title" name="title" class="form-control" id="title" type="text" required>
+				 																		 </div>
+				 																 </div>
+				 														 </div>
+																		 <div class="row">
+																					<div class="col-md-8">
+																							<div class="form-group">
+																								<span>Authors</span>
+																								<input placeholder="Authors" name="authors" class="form-control" id="authors" type="text" required>
+																								<label>For example: Patterson, David; Lamport, Leslie</label>
+																							</div>
+																					</div>
+																			</div>
+																			<div class="row">
+																					 <div class="col-md-8">
+																							 <div class="form-group">
+																								 <span>Publication date</span>
+																								 <input placeholder="pdate" name="pdate" class="form-control" id="pdate" type="text" required>
+																								 <label>For example, 2008, 2008/12 or 2008/12/31.</label>
+																							 </div>
+																					 </div>
+																			 </div>
+																				<div class="row">
+																						 <div class="col-md-8">
+																								 <div class="form-group">
+																									 <span>Volume</span>
+																									 <input placeholder="Volume" name="volume" class="form-control" id="volume" type="text" required>
+																								 </div>
+																						 </div>
+																				 </div>
+																				 <div class="row">
+																							 <div class="col-md-8">
+																									 <div class="form-group">
+																										 <span>Pages</span>
+																										 <input placeholder="Pages" name="pages" class="form-control" id="pages" type="text" required>
+																									 </div>
+																							 </div>
+																					 </div>
+																					 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
+				                                     <div class="clearfix"></div>
+																	 </form>
 														</div>
 												</div>
 										</div>
@@ -376,11 +483,18 @@
 					});
 
 
-				 $("#form_insert_journal").submit(function(e) {
+				 $("#form_insert_journal").submit(function(e) {  //journal Section
 					 e.preventDefault();
 
 					 alert($(this).serialize());
 				 });
+
+
+ 				 $("#form_insert_conference").submit(function(e) { // conference section
+ 					 e.preventDefault();
+
+ 					 alert($(this).serialize());
+ 				 });
 			</script>
 
 
