@@ -130,6 +130,7 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
+														<form id="form_insert_journal">
 															<div class="row">
 	 																 <div class="col-md-8">
 	 																		 <div class="form-group">
@@ -196,6 +197,9 @@
 																					 </div>
 																			 </div>
 																	 </div>
+																	<button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
+                                    <div class="clearfix"></div>
+																 </form>
 														</div>
 												</div>
 										</div>
@@ -206,6 +210,7 @@
 										<div class="col-md-12">
 												<div class="card ">
 														<div class="content">
+												<form id="form_insert_conference">
 															<div class="row">
 	 																 <div class="col-md-8">
 	 																		 <div class="form-group">
@@ -264,6 +269,9 @@
 																						 </div>
 																				 </div>
 																		 </div>
+																		 <button type="submit" class="btn btn-info btn-fill pull-left">Save</button>
+	                                     <div class="clearfix"></div>
+														 </form>
 														</div>
 												</div>
 										</div>
@@ -367,6 +375,12 @@
 						$("#myModal").modal('show');
 					});
 
+
+				 $("#form_insert_journal").submit(function(e) {
+					 e.preventDefault();
+
+					 alert($(this).serialize());
+				 });
 			</script>
 
 
