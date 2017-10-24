@@ -1,3 +1,8 @@
+<?php
+//include auth.php file on all secure pages
+include("auth.php");
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,8 +33,9 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">SISTEM INFORMASI PORTOFOLIO DOSEN UNIVERSITAS TANJUNGPURA</a>
-                </div>
 
+                </div>
+								<a class="btn btn-danger btn-fill pull-right" href="logout.php">Logout</a>
             </div>
         </nav>
 
@@ -44,11 +50,21 @@
 
                             </div>
                             <div class="content">
-                              <p><b>Nama = <span id="nama">Andreas Christian </span></b></p>
-                              <p><b>NIP = <span id="nip">15185888888 </span></b></p>
-                              <p><b>Fakultas = <span id="fakulas">Teknik</span> </b></p>
-                              <p><b>Jurusan = <span id="jurusan">Elektro </span> </b></p>
-                              <p><b>Unit Kerja =<span id="unitkerja">Universitas Tanjungpura</span></b></p>
+														<?php   require("koneksi.php");
+														if ($conn->connect_error) {
+															die("Connection failed: " . $conn->connect_error);
+														}
+														$sql = "SELECT * from database_lengkap_oktober_databaselengkap where NIP LIKE '%".$_SESSION['NIP']."%' ";
+														$result = $conn->query($sql);
+														if ($result->num_rows > 0) {
+															while($row = $result->fetch_assoc()) { ?>
+                              <p><b>Nama = <span id="nama"><?php echo $row['NAMA_TANPA_GELAR']?>  </span></b></p>
+                              <p><b>NIP = <span id="nip"><?php echo $row['NIP']?> </span></b></p>
+                              <p><b>Program Studi = <span id="fakulas"><?php echo $row['Program_Studi']?></span> </b></p>
+                              <p><b>Jurusan = <span id="jurusan"><?php echo $row['Jurusan']?> </span> </b></p>
+                              <p><b>Unit Kerja =<span id="unitkerja"><?php echo $row['Unit_Kerja']?></span></b></p>
+															  <?php }
+															}?>
                             </div>
                         </div>
                     </div>
@@ -84,6 +100,8 @@
 														<th ><center>No.</center></th>
 														<th><center>Type</center></th>
 														<th><center>Title</center></th>
+														<th><center>Publication date</center></th>
+														<th><center>Action</center></th>
 
 												</tr>
 										</thead>

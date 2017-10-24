@@ -1,10 +1,11 @@
 displaydataarticle();
         function displaydataarticle(){
+
                 $.ajax({
                   url : "data_article.php",
                   type :"get",
                   data: {
-                    'showrecord' :1
+                    'nip' :  $('#nip').text()
                   },
                   success:function (s){
                   $('.displaydataarticle').html(s);
@@ -12,6 +13,44 @@ displaydataarticle();
                   }
                 });
             }
+            $('tbody').delegate('.deletearticle','click',function(){
+                      var value = $(this).data('id');
+
+                       swal({
+                         title: "Konfimasi",
+                         text: "Apakah anda yakin ingin menghapus data ini ?",
+                         type: "warning",
+                         showCancelButton: true,
+                         closeOnConfirm: false,
+                         confirmButtonText: "Ya, Hapus !",
+                         confirmButtonColor: "#ec6c62"
+                       }, function() {
+                         $.ajaxSetup({
+                         headers: {
+                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                         }
+                     })
+                         $.ajax({
+                           type:'post',
+                           url :'delete-article.php',
+                           data : {
+                             'id' :value
+                           },
+                           success:function(data){
+                             if(data =='1'){
+                               swal("Deleted!", "Data Berhasil di hapus", "success");
+                               displaydataarticle();
+                             }else {
+	                              swal("Oops!", "Something went wrong", "error");
+                             }
+
+                           }
+
+
+                         });
+                       });
+
+                  });
 
 				 $("#form_insert_journal").submit(function(e) {  //journal Section
 					 e.preventDefault();

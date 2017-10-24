@@ -2,7 +2,7 @@
   require("koneksi.php");
 
 $type = $_POST['type'];
-$nip = $_POST['nip'];
+$nip = trim($_POST['nip']);
 $title = $_POST['title'];
 
 if ($conn->connect_error) {

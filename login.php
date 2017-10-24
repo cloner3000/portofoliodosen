@@ -106,8 +106,13 @@
                          'nidn' : $('#form_login #nidn').val()
                        },
                        success : function(r){
+												 if(r == '1'){
+													 window.location.replace("index.php");
 
-                    console.log(r);
+												 }else {
+												 		swal("Oops!", "Login Error NIP atau NIDN salah", "error");
+												 }
+
                        }
                      });
           				 });
