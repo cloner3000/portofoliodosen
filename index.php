@@ -70,25 +70,32 @@
                     </div>
                 </div>
 
-
+								<div class="btn btn-info btn-fill" id="addmanually">Add Article Manually</div>
+							</br>
+						</br>
 								<div class="tab-content">
-                  <div class="btn btn-info btn-fill" id="addmanually">Add Article Manually</div>
-									<table class="table table-hover table-striped">
+
+									<div class="row">
+												<div class="col-md-12">
+														<div class="card ">
+									<table class="table table-hover table-bordered">
 										<thead>
 												<tr>
 														<th ><center>No.</center></th>
-														<th><center>TH1</center></th>
-														<th><center>TH2</center></th>
+														<th><center>Type</center></th>
+														<th><center>Title</center></th>
+
 												</tr>
 										</thead>
-										<tbody>
 
-
-										</tbody>
+										<tbody class="displaydataarticle"> </tbody>
 									</table>
 
 
 						</div>
+					</div>
+				</div>
+			</div>
             </div>
 
 
@@ -228,113 +235,40 @@
 			<script src="assets/js/bootstrap-notify.js"></script>
 			<script src="assets/js/light-bootstrap-dashboard.js"></script>
 			<script src="assets/js/sweetalert.min.js"></script>
-			<script src="assets/js/notifications.js"></script>
+
 			<script type="text/javascript">
 		    	$(document).ready(function(){
 		        	$.notify({
 		            	icon: 'pe-7s-gift',
 		            	message: "Selamat Datang di <b>SISTEM INFORMASI PORTOFOLIO UNIVERSITAS TANJUNGPURA</b> "
-
 		            },{
 		                type: 'info',
 		                timer: 4000
 		            });
-
 		    	});
 					$('#addmanually').click(function(){
 						$("#myModal").modal('show');
+
 					});
 
 
-				 $("#form_insert_journal").submit(function(e) {  //journal Section
-					 e.preventDefault();
-					 swal({
-							 title: "Confirm Navigation",
-							 text: "Are you sure want to save this article ?",
-							 type: "info",
-							 showCancelButton: true,
-							 closeOnConfirm: false,
-							 confirmButtonText: "Yes !",
-							 confirmButtonColor: "#59c2e6"
-						 },  function() {
-						 $.ajax({
-							 url: 'insert_article.php',
-							 type:'post',
-							 data : {
-								 'type' : 'Journal',
-								 'nip' : $('#nip').text(),
-								 'title' :	$('#form_insert_journal #title').val(),
-								 'authors' : $('#form_insert_journal #authors').val(),
-								 'pdate' : $('#form_insert_journal #pdate').val(),
-								 'journal' : $('#form_insert_journal #journal').val(),
-								 'volume' : $('#form_insert_journal #volume').val(),
-								 'issue' : $('#form_insert_journal #issue').val(),
-								 'pages' : $('#form_insert_journal #pages').val(),
-								 'publisher' : $('#form_insert_journal #publisher').val()
-							 },
-							 success : function(r){
-									$("#myModal").modal('hide');
-								if(r =='1'){
-									$.notify({
-											icon: 'pe-7s-check',
-											message: "Data saved successfully . Status : SUCCESS"
-
-										},{
-												type: 'success',
-												timer: 4000
-										});
-										swal("Done!", "Data saved successfully", "success");
-								}else {
-										swal("Oops!", "Something went wrong", "error");
-									$.notify({
-											icon: 'pe-7s-bell',
-											message: "Oops, Something went wrong . Status : FAILED"
-
-										},{
-												type: 'danger',
-												timer: 4000
-										});
-								}
-							 }
-						 });
-			 	 });
-				 });
 
 
- 				 $("#form_insert_conference").submit(function(e) { // conference section
- 					 e.preventDefault();
 
-					 $.ajax({
-						 url: 'insert_article.php',
-						 type:'post',
-						 data : {
-							 'type' : 'Journal',
-							 'title' :	$('#title').val()
-						 },
-						 success : function(r){
-							 console.log(r);
-						 }
-					 });
- 				 });
 
-				 $("#form_insert_chapter").submit(function(e) { // chapter section
-						 e.preventDefault();
 
-						 alert($(this).serialize());
-					 });
 
-					 $("#form_insert_chapter").submit(function(e) { // chapter section
-							e.preventDefault();
 
-							alert($(this).serialize());
-						});
-
-						$("#form_insert_chapter").submit(function(e) { // chapter section
-								e.preventDefault();
-
-								alert($(this).serialize());
-							});
 			</script>
-
+			<script src="assets/custom.js">
+			</script>
+			<!-- <script src="assets/journal.js"></script>  // in case
+			<script src="assets/conference.js"></script>
+			<script src="assets/chapter.js"></script>
+			<script src="assets/book.js"></script>
+			<script src="assets/thesis.js"></script>
+			<script src="assets/patent.js"></script>
+			<script src="assets/courtcase.js"></script>
+			<script src="assets/other.js"></script> -->
 
 </html>
