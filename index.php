@@ -15,7 +15,14 @@
 		<link href="assets/css/sweetalert.css" rel="stylesheet" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+		<style>
+		.card .category, .card label {
+			color: black;
+		}
+		</style>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed">
@@ -45,7 +52,7 @@
                             </div>
                             <div class="content">
                               <p><b>Nama = <span id="nama">Andreas Christian </span></b></p>
-                              <p><b>NIP = <span id="nip">15185888888 </span></b></p>
+                              <p><b>NIP = <span id="nip">198412162008121003</span></b></p>
                               <p><b>Fakultas = <span id="fakulas">Teknik</span> </b></p>
                               <p><b>Jurusan = <span id="jurusan">Elektro </span> </b></p>
                               <p><b>Unit Kerja =<span id="unitkerja">Universitas Tanjungpura</span></b></p>
@@ -73,6 +80,7 @@
 
 								<div class="tab-content">
                   <div class="btn btn-info btn-fill" id="addmanually">Add Article Manually</div>
+									<div class="btn btn-info btn-fill" id="detail" onclick="lihatdetail()">Detail</div>
 									<table class="table table-hover table-striped">
 										<thead>
 												<tr>
@@ -105,6 +113,193 @@
 
 
 </body>
+<!-- REDHA -->
+
+<div id="myModaldetail" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Riwayat Data Pegawai</h4>
+            </div>
+            <div class="modal-body">
+							<h4 class="modal-title"  id="detail-nip"></h3>
+              <ul class="nav nav-tabs">
+								<li class="active"><a href="#Personal" data-toggle="tab"> Data Personal</a></li>
+								<li class=""><a href="#Pendidikan" data-toggle="tab">Riwayat Pendidikan</a></li>
+								<li class=""><a href="#Pangkat" data-toggle="tab">Riwayat Pangkat</a></li>
+								<li class=""><a href="#Jabatan" data-toggle="tab">Riwayat Jabatan</a></li>
+								<li class=""><a href="#Kerja" data-toggle="tab">Riwayat Unit Kerja</a></li>
+              </ul>
+
+              <div class="tab-content">
+  							<div class="tab-pane fade  active in" id="Personal">
+									<div class="row">
+										<div class="col-md-12">
+												<div class="card ">
+														<div class="content">
+															  <div class="row">
+															<div class="col-md-12">
+															<div class="form-horizontal">
+														 			 <label class="col-md-3 col-xs-12 control-label">Nama Lengkap</label>
+														 			 <div class="col-md-6 col-xs-12">
+														 					 <label class="form-control" id="dtl_nama"> </label>
+														 			 </div>
+														 	 </div>
+														 </div>
+													 </div>
+													   <div class="row">
+														 <div class="col-md-12">
+															 <div class="form-horizontal">
+ 														 			 <label class="col-md-3 col-xs-12 control-label">Tempat Lahir</label>
+ 														 			 <div class="col-md-6 col-xs-12">
+ 														 					 <label class="form-control" id="dtl_tmp_lahir"></label>
+ 														 			 </div>
+ 														 	 </div>
+														 </div>
+													 </div>
+													   <div class="row">
+														<div class="col-md-12">
+															 <div class="form-horizontal">
+ 														 			 <label class="col-md-3 col-xs-12 control-label">Tanggal Lahir</label>
+ 														 			 <div class="col-md-6 col-xs-12">
+ 														 					 <label class="form-control" id="dtl_tgl_lahir"> </label>
+ 														 			 </div>
+ 														 	 </div>
+														</div>
+													</div>
+													</div>
+												</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade " id="Pendidikan">
+									<div class="row">
+										<div class="col-md-12">
+												<div class="card ">
+														<div class="content">
+															<table id="table_riwayat_pendidikan" class="table table-striped">
+																 <thead>
+																		<tr>
+																			 <th>No.</th>
+																			 <th>Jenjang</th>
+																			 <th>Jurusan/Institusi</th>
+																			 <th>No./Tgl. Ijazah</th>
+																		</tr>
+																 </thead>
+																 <tbody>
+
+																 </tbody>
+																</table>
+														</div>
+												</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade " id="Pangkat">
+									<div class="row">
+										<div class="col-md-12">
+												<div class="card ">
+														<div class="content">
+															<table id="table_riwayat_pangkat" class="table table-striped">
+															   <thead>
+															      <tr>
+															         <th>No.</th>
+															         <th>Status Pengangkatan</th>
+															         <th>Pangkat</th>
+															         <th>Gol.</th>
+															         <th>TMT</th>
+															         <th>Nomor/Tgl. SK</th>
+															         <th>MK Th</th>
+															         <th>MK Bl</th>
+															         <th>Pejabat Penetap</th>
+															      </tr>
+															   </thead>
+															   <tbody>
+
+															   </tbody>
+															</table>
+
+														</div>
+												</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade " id="Jabatan">
+									<div class="row">
+										<div class="col-md-12">
+												<div class="card ">
+														<div class="content">
+															<table id="" class="table table-striped">
+															   <thead>
+															      <tr>
+															         <th>No.</th>
+															         <th>Jabatan/Level</th>
+															         <th>No./Tgl. SK</th>
+															         <th>Pejabat Penetap/NIP</th>
+															         <th>TMT</th>
+															         <th>No./Tgl. Lantik</th>
+															      </tr>
+															   </thead>
+															   <tbody>
+
+															   </tbody>
+															</table>
+														</div>
+												</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade " id="Kerja">
+									<div class="row">
+										<div class="col-md-12">
+												<div class="card ">
+														<div class="content">
+															<table id="" class="table table-striped">
+   <thead>
+      <tr>
+         <th>No.</th>
+         <th>Unit Kerja</th>
+         <th>No./Tgl. SK</th>
+         <th>Pejabat Penetap/NIP</th>
+         <th>TMT</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>
+            1
+         </td>
+         <td id="riwayat_unit">
+            Fakultas Pertanian
+         </td>
+         <td>
+            <br>
+         </td>
+         <td>
+            <br>
+         </td>
+         <td>
+         </td>
+      </tr>
+   </tbody>
+</table>
+														</div>
+												</div>
+										</div>
+									</div>
+								</div>
+
+                    </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end of redha -->
 <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -224,13 +419,19 @@
     </div>
 </div>
 			<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+			<script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
 			<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 			<script src="assets/js/bootstrap-notify.js"></script>
 			<script src="assets/js/light-bootstrap-dashboard.js"></script>
 			<script src="assets/js/sweetalert.min.js"></script>
 			<script src="assets/js/notifications.js"></script>
+
 			<script type="text/javascript">
 		    	$(document).ready(function(){
+						// $('#cari_nama_table').DataTable({
+						// 	searching: false,
+						// });
+
 		        	$.notify({
 		            	icon: 'pe-7s-gift',
 		            	message: "Selamat Datang di <b>SISTEM INFORMASI PORTOFOLIO UNIVERSITAS TANJUNGPURA</b> "
@@ -316,6 +517,111 @@
 						 }
 					 });
  				 });
+//redha
+				 $("#form_cari_nip").submit(function(e) { //
+ 					 e.preventDefault();
+
+					 $.ajax({
+						 url: 'cari_nip.php',
+						 type:'post',
+						 data:  new FormData(this),
+					   contentType: false,
+					   cache: false,
+						 dataType: 'json',
+						 success : function(data){
+							 var table = $('#cari_nama_table').DataTable();
+							 table.destroy();
+							 	$('#cari_nama_table tbody').empty();
+							for (var i = 0; i < data.length; i++) {
+								content[i]='<tr>'+
+		               '<td> 1</td>'+
+		               '<td>'+
+		                  '<strong>'+data[i].nama_lengkap+'</strong> (55 th) ('+data[i].JK+') <br>'+
+		                  'NIP. <a  onclick="lihatdetail(\''+data[i].nip+'\')">'+data[i].nip+'</a>'+
+		               '</td>'+
+		               '<td> '+data[i].tempat_lahir+'<br> '+data[i].tgl_lahir+'</td>'+
+		               '<td> '+data[i].golongan+'</td>'+
+		               '<td>'+data[i].unit_kerja+'</td>'+
+		               '<td>Struktural<br>'+data[i].jabatan+' </td>'+
+		               '<td>'+data[i].jenjang_tb+'</td>'+
+		            '</tr>';
+								$('#cari_nama_table tbody').append(content[i]);
+							}
+							$('#cari_nama_table').DataTable({
+								searching: false,
+							});
+						 }
+					 });
+ 				 });
+function lihatdetail(){
+	var nip=$('#nip').text();
+	$('#myModaldetail').modal('show');
+	$.ajax({
+		url: 'cari_nip.php',
+		type:'post',
+		data : {
+			'nip' :	nip
+		},
+		dataType: 'json',
+		success : function(data){
+			$('#dtl_nama').html(data['nama_lengkap']);
+			$('#dtl_tmp_lahir').html(data['tempat_lahir']);
+			$('#dtl_tgl_lahir').html(data['tgl_lahir']);
+			$('#riwayat_unit').html(data['unit_kerja']);
+
+		}
+	});
+	var content=[];
+	$.ajax({
+		url: 'riwayat_pendidikan.php',
+		type:'post',
+		data : {
+			'nip' :	nip
+		},
+		dataType: 'json',
+		success : function(data){
+		$('#table_riwayat_pendidikan tbody').empty();
+		for (var i = 0; i < data.length; i++) {
+			content[i]='<tr>'+
+				 '<td>'+(i+1)+'</td>'+
+				 '<td>'+
+						'<strong>'+data[i].JENJANG+'</strong> </td>'+
+				 '<td> '+data[i].PT+'<br> '+data[i].PROD1+'</td>'+
+				 '<td>'+data[i].TGL+'</td>'+
+			'</tr>';
+			$('#table_riwayat_pendidikan tbody').append(content[i]);
+		}
+		}
+	});
+
+	$.ajax({
+		url: 'riwayat_pangkat.php',
+		type:'post',
+		data : {
+			'nip' :	nip
+		},
+		dataType: 'json',
+		success : function(data){
+		$('#table_riwayat_pangkat tbody').empty();
+		for (var i = 0; i < data.length; i++) {
+			content[i]='<tr>'+
+			'<td>'+(i+1)+'</td>'+
+			'<td> </td>'+
+			'<td> </td>'+
+			'<td>'+data[i].gol+'</td>'+
+			'<td>'+data[i].tmt+'</td>'+
+			'<td>'+data[i].NO_SK+'</td>'+
+			'<td>'+data[i].tahun+'</td>'+
+			'<td>'+data[i].bulan+'</td>'+
+			'<td> </td>'+
+			'</tr>';
+			$('#table_riwayat_pangkat tbody').append(content[i]);
+		}
+		}
+	});
+
+}
+//end of redha
 
 				 $("#form_insert_chapter").submit(function(e) { // chapter section
 						 e.preventDefault();
