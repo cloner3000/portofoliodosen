@@ -81,7 +81,7 @@ include("auth.php");
                     </div> -->
                 </div>
 
-								<div class="btn btn-info btn-fill" id="addmanually">Add Article Manually</div>
+								<div class="btn btn-info btn-fill" id="addmanually">Tambahkan Artikel</div>
 								<div class="btn btn-info btn-fill" id="detail" onclick="lihatdetail()">Detail</div>
 							</br>
 						</br>
@@ -132,18 +132,18 @@ include("auth.php");
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Add Article Manually</h4>
+                <h4 class="modal-title">Tambah Artikel</h4>
             </div>
             <div class="modal-body">
               <ul class="nav nav-tabs">
-								<li class="active"><a href="#journal" data-toggle="tab"> Journal</a></li>
-								<li class=""><a href="#conference" data-toggle="tab">Conference</a></li>
+								<li class="active"><a href="#journal" data-toggle="tab"> Jurnal</a></li>
+								<li class=""><a href="#conference" data-toggle="tab">Konferensi</a></li>
 								<li class=""><a href="#chapter" data-toggle="tab">Chapter</a></li>
-								<li class=""><a href="#bookok" data-toggle="tab">Book</a></li>
+								<li class=""><a href="#bookok" data-toggle="tab">Buku</a></li>
 								<li class=""><a href="#thesis" data-toggle="tab">Thesis</a></li>
 								<li class=""><a href="#patent" data-toggle="tab">Patent</a></li>
 								<li class=""><a href="#courtcase" data-toggle="tab">Court Case</a></li>
-								<li class=""><a href="#other" data-toggle="tab">Other</a></li>
+								<li class=""><a href="#other" data-toggle="tab">Lain-lain</a></li>
               </ul>
 
               <div class="tab-content">
