@@ -54,7 +54,7 @@ include("auth.php");
 														if ($conn->connect_error) {
 															die("Connection failed: " . $conn->connect_error);
 														}
-														$sql = "SELECT * from database_lengkap_oktober_databaselengkap where NIP LIKE '%".$_SESSION['NIP']."%' ";
+														$sql = "SELECT * from kepegawaian_databaselengkap where NIP LIKE '%".$_SESSION['NIP']."%' ";
 														$result = $conn->query($sql);
 														if ($result->num_rows > 0) {
 															while($row = $result->fetch_assoc()) { ?>
@@ -69,24 +69,20 @@ include("auth.php");
                         </div>
                     </div>
 
-                    <div class="col-md-5">
+                    <!-- <div class="col-md-5">
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">KETERANGAN</h4>
                             </div>
                             <div class="content">
-															<p>Berilah Tanda Cek (&#10004;) pada kolom skor sesuai dengan penilaian Anda</p>
-			                          <div class="item">1 = Kurang </div>
-			                          <div class="item">2 = Cukup</div>
-			                          <div class="item">3 = Baik</div>
-			                          <div class="item">4 = Sangat Baik</div>
-			                          <p><b>Skor Lulus = 27 atau lebih </b></p>
+
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
 								<div class="btn btn-info btn-fill" id="addmanually">Add Article Manually</div>
+								<div class="btn btn-info btn-fill" id="detail" onclick="lihatdetail()">Detail</div>
 							</br>
 						</br>
 								<div class="tab-content">
@@ -130,6 +126,7 @@ include("auth.php");
 
 
 </body>
+<?php include 'redha.html' ?>
 <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -272,7 +269,72 @@ include("auth.php");
 
 
 
-
+					function lihatdetail(){
+						var nip=$('#nip').text();
+						$('#myModaldetail').modal('show');
+						$.ajax({
+							url: 'cari_nip.php',
+							type:'post',
+							data : {
+								'nip' :	nip
+							},
+							dataType: 'json',
+							success : function(data){
+								$('#dtl_nama').html(data['nama_lengkap']);
+								$('#dtl_tmp_lahir').html(data['tempat_lahir']);
+								$('#dtl_tgl_lahir').html(data['tgl_lahir']);
+								$('#riwayat_unit').html(data['unit_kerja']);
+							}
+						});
+						var content=[];
+						$.ajax({
+							url: 'riwayat_pendidikan.php',
+							type:'post',
+							data : {
+								'nip' :	nip
+							},
+							dataType: 'json',
+							success : function(data){
+							$('#table_riwayat_pendidikan tbody').empty();
+							for (var i = 0; i < data.length; i++) {
+								content[i]='<tr>'+
+									 '<td>'+(i+1)+'</td>'+
+									 '<td>'+
+											'<strong>'+data[i].JENJANG+'</strong> </td>'+
+									 '<td> '+data[i].PT+'<br> '+data[i].PROD1+'</td>'+
+									 '<td>'+data[i].TGL+'</td>'+
+								'</tr>';
+								$('#table_riwayat_pendidikan tbody').append(content[i]);
+							}
+							}
+						});
+						$.ajax({
+							url: 'riwayat_pangkat.php',
+							type:'post',
+							data : {
+								'nip' :	nip
+							},
+							dataType: 'json',
+							success : function(data){
+							$('#table_riwayat_pangkat tbody').empty();
+							for (var i = 0; i < data.length; i++) {
+								content[i]='<tr>'+
+								'<td>'+(i+1)+'</td>'+
+								'<td> </td>'+
+								'<td> </td>'+
+								'<td>'+data[i].gol+'</td>'+
+								'<td>'+data[i].tmt+'</td>'+
+								'<td>'+data[i].NO_SK+'</td>'+
+								'<td>'+data[i].tahun+'</td>'+
+								'<td>'+data[i].bulan+'</td>'+
+								'<td> </td>'+
+								'</tr>';
+								$('#table_riwayat_pangkat tbody').append(content[i]);
+							}
+							}
+						});
+					}
+					//end of redha
 
 
 
