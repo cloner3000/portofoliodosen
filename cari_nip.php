@@ -7,7 +7,7 @@ $nip = $_POST['nip'];
 
 
 $resultfasilitas = array();
-$querylog ="SELECT nama_lengkap,nip,`tgl._lahir` as tgl_lahir,JK,tempat_lahir,`Gol.` as golongan ,unit_kerja,`jab.fungsional` as jabatan,`Jnj._Homebase` as jenjang_tb  FROM kepegawaian_databaselengkap where nip = '$nip'";
+$querylog ="SELECT nama_lengkap,nip,`tgl._lahir` as tgl_lahir,JK,tempat_lahir,`Gol.` as golongan ,unit_kerja,`jab.fungsional` as jabatan,`Jnj._Homebase` as jenjang_tb,keahlian,fix  FROM kepegawaian_databaselengkap where nip = '$nip'";
 $resultlog = $conn->query($querylog);
 if($resultlog->num_rows > 0){
 
@@ -23,6 +23,8 @@ if($resultlog->num_rows > 0){
     "unit_kerja" => $datalog->unit_kerja,
     "jabatan" => $datalog->jabatan,
     "jenjang_tb" => $datalog->jenjang_tb,
+    "keahlian" => $datalog->keahlian,
+    "fix" => $datalog->fix,
    );
 }
 }

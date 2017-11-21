@@ -12,15 +12,31 @@ include("auth.php");
 	<title>Portofolio Dosen</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/animate.min.css" rel="stylesheet"/>
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
     <link href="assets/css/demo.css" rel="stylesheet" />
     <link href="assets/css/lobibox.css" rel="stylesheet" />
 		<link href="assets/css/sweetalert.css" rel="stylesheet" />
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+
+	  <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/js/bootstrap-editable.min.js"></script> -->
+
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+		<style>
+
+	.tt-menu { width:300px; }
+	ul.typeahead{margin:0px;}
+	ul.typeahead.dropdown-menu li a {padding: 10px !important;	border-bottom:#CCC 1px solid;}
+	ul.typeahead.dropdown-menu li:last-child a { border-bottom:0px !important; }
+
+	.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+		text-decoration: none;
+		outline: 0;
+	}
+	</style>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed">
@@ -60,6 +76,7 @@ include("auth.php");
 															while($row = $result->fetch_assoc()) { ?>
                               <p><b>Nama = <span id="nama"><?php echo $row['NAMA_TANPA_GELAR']?>  </span></b></p>
                               <p><b>NIP = <span id="nip"><?php echo $row['NIP']?> </span></b></p>
+															<span id="nip_lama" style="display:none"><?php echo $row['NIP_Lama']?></span>
                               <p><b>Program Studi = <span id="fakulas"><?php echo $row['Program_Studi']?></span> </b></p>
                               <p><b>Jurusan = <span id="jurusan"><?php echo $row['Jurusan']?> </span> </b></p>
                               <p><b>Unit Kerja =<span id="unitkerja"><?php echo $row['Unit_Kerja']?></span></b></p>
@@ -80,9 +97,10 @@ include("auth.php");
                         </div>
                     </div> -->
                 </div>
-
 								<div class="btn btn-info btn-fill" id="addmanually">Tambahkan Artikel</div>
 								<div class="btn btn-info btn-fill" id="detail" onclick="lihatdetail()">Detail</div>
+
+
 							</br>
 						</br>
 								<div class="tab-content">
@@ -114,19 +132,15 @@ include("auth.php");
 
 
         <footer class="footer">
-            <div class="container-fluid">
 
-                <p class="copyright pull-right">
-                    &copy;  <a href="http://tik.untan.ac.id">Puskom Tim</a> UNIVERSITAS TANJUNGPURA
-                </p>
-            </div>
         </footer>
 
     </div>
 
 
 </body>
-<?php include 'redha.html' ?>
+
+<?php include 'redha.php' ?>
 <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -244,13 +258,42 @@ include("auth.php");
 
         </div>
     </div>
+
 </div>
-			<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+			<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 			<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 			<script src="assets/js/bootstrap-notify.js"></script>
 			<script src="assets/js/light-bootstrap-dashboard.js"></script>
 			<script src="assets/js/sweetalert.min.js"></script>
+			<!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 
+	     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+	     <!-- x-editable (bootstrap version) -->
+	     <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+	     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.6/bootstrap-editable/js/bootstrap-editable.min.js"></script> -->
+
+
+
+			<script>
+					$(document).ready(function () {
+							$('#dtl_keahlian').typeahead({
+									source: function (query, result) {
+											$.ajax({
+													url: "database.php",
+							 data: 'query=' + query,
+													dataType: "json",
+													type: "POST",
+													success: function (data) {
+								 result($.map(data, function (item) {
+									 return item;
+															}));
+													}
+											});
+									}
+							});
+					});
+			</script>
 			<script type="text/javascript">
 		    	$(document).ready(function(){
 		        	$.notify({
@@ -260,17 +303,58 @@ include("auth.php");
 		                type: 'info',
 		                timer: 4000
 		            });
+								// $('#selkeahlian').select2({
+								//   placeholder: 'Select an option',
+								// 	width: 'element',
+	              //   minimumResultsForSearch: Infinity
+								// });
+								$("#form_data_personal").submit(function(e) {
+									e.preventDefault();
+									swal({
+											title: "Confirm Navigation",
+											text: "Are you sure want to update this profil ?",
+											type: "info",
+											showCancelButton: true,
+											closeOnConfirm: false,
+											confirmButtonText: "Yes !",
+											confirmButtonColor: "#59c2e6"
+										},  function() {
+										$.ajax({
+											url: 'update_profile.php',
+											type:'post',
+											data : {
+												'type' : 'personal',
+												'nip' : $('#nip').text(),
+												'nama' :	$('#dtl_nama').val(),
+												'tempat_lahir' : $('#dtl_tmp_lahir').val(),
+												'tgl_lahir' : $('#dtl_tgl_lahir').val(),
+												'keahlian' : $('#dtl_keahlian').val(),
+											},
+											success : function(r){
+											 if(r =='1'){
+													 swal("Done!", "Data saved successfully", "success");
+													 $('#tombolsimpan').remove();
+
+																 displaydataarticle();
+											 }else {
+													 swal("Oops!", "Something went wrong", "error");
+											 }
+											}
+										});
+								});
+								});
+
 		    	});
+
 					$('#addmanually').click(function(){
 						$("#myModal").modal('show');
 
 					});
 
 
-
-
 					function lihatdetail(){
 						var nip=$('#nip').text();
+						var nip_lama=$('#nip_lama').text();
 						$('#myModaldetail').modal('show');
 						$.ajax({
 							url: 'cari_nip.php',
@@ -280,10 +364,12 @@ include("auth.php");
 							},
 							dataType: 'json',
 							success : function(data){
-								$('#dtl_nama').html(data['nama_lengkap']);
-								$('#dtl_tmp_lahir').html(data['tempat_lahir']);
-								$('#dtl_tgl_lahir').html(data['tgl_lahir']);
+								$('#dtl_nama').val(data['nama_lengkap']);
+								$('#dtl_tmp_lahir').val(data['tempat_lahir']);
+								$('#dtl_tgl_lahir').val(data['tgl_lahir']);
 								$('#riwayat_unit').html(data['unit_kerja']);
+								$('#dtl_keahlian').val(data['keahlian']);
+								$('#tombolsimpan').remove();
 							}
 						});
 						var content=[];
@@ -305,7 +391,9 @@ include("auth.php");
 									 '<td>'+data[i].TGL+'</td>'+
 								'</tr>';
 								$('#table_riwayat_pendidikan tbody').append(content[i]);
+
 							}
+
 							}
 						});
 						$.ajax({
@@ -333,6 +421,94 @@ include("auth.php");
 							}
 							}
 						});
+						$.ajax({
+							url: 'riwayat_mengajar.php',
+							type:'post',
+							data : {
+								'nip' :	nip,'nip_lama': nip_lama,'status': 'semua'
+							},
+							dataType: 'json',
+							success : function(data){
+							$('#select_riwayat_mengajar').empty();
+							$('#select_riwayat_mengajar').append('<option value="" disabled selected hidden>Please Choose...</option>');
+												for (var i = 0; i < data.length; i++) {
+													content[i]='<option value="'+data[i].tahun_akad+'">'+data[i].tahun_akad+' </option>';
+													$('#select_riwayat_mengajar').append(content[i]);
+
+												}
+																			$('#select_riwayat_mengajar').on('change', function() {
+																									$.ajax({
+																									 url: 'riwayat_mengajar.php',
+																									 type:'post',
+																									 data : {
+																										 'nip' :	nip,'nip_lama': nip_lama,'status': this.value
+																									 },
+																									 dataType: 'json',
+																									 success : function(data){
+																									 $('#table_riwayat_mengajar').empty();
+																									 for (var i = 0; i < data.length; i++) {
+																										 content[i]='<tr>'+
+																										 '<td>'+(i+1)+'</td>'+
+																										 '<td>'+data[i].tahun_akad+' </td>'+
+																										 '<td>'+data[i].kode_mk+'</td>'+
+																										 '<td>'+data[i].nama_mk+'</td>'+
+																										 '<td>'+data[i].kelas+'</td>'+
+																										 '<td>'+data[i].program+'</td>'+
+																										 '<td> </td>'+
+																										 '</tr>';
+																										 $('#table_riwayat_mengajar').append(content[i]);
+																									 }
+
+																									}
+																								});
+																						})
+							}
+						});
+
+						$.ajax({
+							url: 'riwayat_bimbingan.php',
+							type:'post',
+							data : {
+								'nip' :	nip,'nip_lama': nip_lama,'status': 'semua'
+							},
+							dataType: 'json',
+							success : function(data){
+							$('#select_riwayat_bimbingan').empty();
+							$('#select_riwayat_bimbingan').append('<option value="" disabled selected hidden>Please Choose...</option>');
+
+												for (var i = 0; i < data.length; i++) {
+													content[i]='<option value="'+data[i].key+'">'+data[i].tahun_angkatan+' </option>';
+													$('#select_riwayat_bimbingan').append(content[i]);
+
+												}
+																			$('#select_riwayat_bimbingan').on('change', function() {
+																									$.ajax({
+																									 url: 'riwayat_bimbingan.php',
+																									 type:'post',
+																									 data : {
+																										 'nip' :	nip,'nip_lama': nip_lama,'status': this.value
+																									 },
+																									 dataType: 'json',
+																									 success : function(data){
+																									 $('#table_riwayat_bimbingan').empty();
+																									 for (var i = 0; i < data.length; i++) {
+																										 content[i]='<tr>'+
+																										 '<td>'+(i+1)+'</td>'+
+																										 '<td>'+data[i].progdi+' </td>'+
+																										 '<td>'+data[i].program+'</td>'+
+																										 '<td>'+data[i].nim+'</td>'+
+																										 '<td>'+data[i].nama+'</td>'+
+																										 '</tr>';
+																										 $('#table_riwayat_bimbingan').append(content[i]);
+																									 }
+
+																									}
+																								});
+																						})
+							}
+						});
+
+
 					}
 					//end of redha
 
@@ -341,7 +517,9 @@ include("auth.php");
 
 			</script>
 			<script src="assets/custom.js">
+
 			</script>
+			<script src="assets/js/typeahead.js"></script>
 			<!-- <script src="assets/journal.js"></script>  // in case
 			<script src="assets/conference.js"></script>
 			<script src="assets/chapter.js"></script>
