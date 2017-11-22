@@ -508,6 +508,28 @@ include("auth.php");
 							}
 						});
 
+						// BLOCK DATA ARTIKEL REPOSITORY
+						$.ajax({
+							url: 'data_artikel_repository.php',
+							type: 'post',
+							data : {'nip' : nip},
+							dataType: 'json',
+							success: function(data){
+								$('#table_artikel_repository tbody').empty();
+								for (var i=0; i < data.length; i++) {
+									content[i]='<tr>'+	
+										'<td>'+ (i+1) + '</td>'+
+										'<td>'+ data[i].type +'</td>'+
+										'<td>'+ data[i].title +'</td>'+
+										'<td>'+ data[i].publication_date +'</td>'+
+										'<td><center><a target="_BLANK" href="http://repodig.untan.ac.id/senayan/index.php?p=show_detail&id='+ data[i].biblio_id + '" >Link Artikel</a></center></td>'+
+									'<tr>';
+									$('#table_artikel_repository tbody').append(content[i]);
+								}
+							}
+						});
+						// ./BLOCK DATA ARTIKEL REPOSITORY
+
 
 					}
 					//end of redha
